@@ -1,18 +1,19 @@
 <template>
   <AppUserList>
-    <template #secondrow="{item}">
-      <a :href="'tel:' + item.phone"> {{ item.phone }}</a>
-      <a :href="'mailto:' + item.email"> {{ item.email }}</a>
+    <template #userlist="{list, count}">
+      {{ count }}
+      <AppUserCardsList :list="list" />
     </template>
   </AppUserList>
 </template>
 
 <script>
 import AppUserList from "@/components/AppUserList";
-
+import AppUserCardsList from "@/components/AppUserCardsList";
 export default {
   components: {
-    AppUserList
+    AppUserList,
+    AppUserCardsList
   }
 };
 </script>

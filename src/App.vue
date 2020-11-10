@@ -1,6 +1,8 @@
 <template>
+<AppLayout>
+  <template #header>Slot are awesome</template>
   <div class="page">
-
+ <AppButton>Hello</AppButton>
     <select v-model="selected">
       <option 
         v-for="option in options" 
@@ -12,6 +14,9 @@
 
 
     <AppUserList>
+      <template #loading>
+        <AppSpinner></AppSpinner>
+        </template>
       <template #userlist="{list}">
         <AppUserCardsList :list="list">
           <template #[selected]="{text}">
@@ -19,15 +24,22 @@
           </template>
         </AppUserCardsList>
       </template>
-    </AppUserList>
+    </AppUserList>    
   </div>
+  </AppLayout>
 </template>
 
 <script>
+import AppLayout from "@/components/AppLayout";
+import AppSpinner from "@/components/AppSpinner";
 import AppUserList from "@/components/AppUserList";
+import AppButton from "@/components/AppButton";
 import AppUserCardsList from "@/components/AppUserCardsList";
 export default {
   components: {
+    AppSpinner,
+    AppLayout,
+    AppButton,
     AppUserList,
     AppUserCardsList
   },

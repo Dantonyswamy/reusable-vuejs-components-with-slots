@@ -2,7 +2,12 @@
   <AppUserList>
     <template #userlist="{list, count}">
       {{ count }}
-      <AppUserCardsList :list="list" />
+      <AppUserCardsList :list="list" >
+        <template v-slot:secondrow="slotProps">
+          {{slotProps.item.name.last}}
+          <button @click="alert(slotProps.item.name.last)">Display last name</button>
+          </template>      
+      </AppUserCardsList>
     </template>
   </AppUserList>
 </template>
@@ -17,7 +22,7 @@ export default {
   },
   methods:{
     alert(prop){
-      alert('Display email '+ prop)
+      alert('Last name '+ prop)
 
     }
   }
